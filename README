@@ -1,0 +1,28 @@
+# Zabbix Agent (Docker + Script)
+
+This repository provides two ways to set up **Zabbix Agent 2** on Ubuntu-based systems:
+
+-------------------------------------------------------------------------------------------
+
+*Install via script* (for running directly on a VM/Server)  
+
+* Clone the repository and run the setup script:
+
+1 - git clone https://github.com/r-hadigol/zabbix-agent.git
+
+2 - cd zabbix-agent
+
+3 - chmod +x setup-agent.sh
+4 - ./setup-agent.sh  <ZABBIX_SERVER_IP>  <ZABBIX_AGENT_HOSTNAME>
+
+EXAMPLE : ./setup-agent.sh 192.168.1.100 ubuntu-02
+
+----------------------------------------------------------------------------------------------
+
+*Run as a Docker container* (for lightweight deployments)
+
+docker build -t my-zabbix-agent:latest .
+
+docker run -d --name zabbix-agent -e ZBX_SERVER="192.168.1.100" -e HOSTNAME="docker-agent" my-zabbix-agent:latest
+
+#####################################################################################################################
